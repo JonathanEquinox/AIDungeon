@@ -91,30 +91,30 @@ def split_first_sentence(text):
     return text[0:split_point], text[split_point:]
 
 def cut_trailing_action(text):
-    lines = text.split("\n")
-    last_line = lines[-1]
-    if "you ask" in last_line or "You ask" in last_line or "you say" in last_line or "You say" in last_line:
-        text = "\n".join(lines[0:-1])
+    #lines = text.split("\n")
+    #last_line = lines[-1]
+    #if "you ask" in last_line or "You ask" in last_line or "you say" in last_line or "You say" in last_line:
+    #    text = "\n".join(lines[0:-1])
     return text
     
 def cut_trailing_sentence(text):
-    text = standardize_punctuation(text)
-    last_punc = max(text.rfind('.'), text.rfind("!"), text.rfind("?"))
-    if last_punc <= 0:
-        last_punc = len(text)-1
+    #text = standardize_punctuation(text)
+    #last_punc = max(text.rfind('.'), text.rfind("!"), text.rfind("?"))
+    #if last_punc <= 0:
+    #    last_punc = len(text)-1
 
-    et_token = text.find("<")
-    if et_token > 0:
-        last_punc = min(last_punc, et_token-1)
+    #et_token = text.find("<")
+    #if et_token > 0:
+    #    last_punc = min(last_punc, et_token-1)
 
-    act_token = text.find(">")
-    if act_token > 0:
-        last_punc = min(last_punc, act_token-1)
+    #act_token = text.find(">")
+    #if act_token > 0:
+    #    last_punc = min(last_punc, act_token-1)
 
-    text = text[:last_punc]
+   # text = text[:last_punc]
 
-    text = cut_trailing_quotes(text)
-    text = cut_trailing_action(text)
+    #text = cut_trailing_quotes(text)
+    #text = cut_trailing_action(text)
     return text
 
 
