@@ -69,65 +69,62 @@ def remove_profanity(text):
 
 
 def cut_trailing_quotes(text):
-    #num_quotes = text.count('"')
-    #if num_quotes % 2 is 0:
-    #    return text
-    #else:
-    #    final_ind = text.rfind('"')
-    #    return text[:final_ind]
-    return text
+    num_quotes = text.count('"')
+    if num_quotes % 2 is 0:
+        return text
+    else:
+        final_ind = text.rfind('"')
+        return text[:final_ind]
 
     
 def split_first_sentence(text):
-    #first_period = text.find('.')
-    #first_exclamation = text.find('!')
+    first_period = text.find('.')
+    first_exclamation = text.find('!')
     
-    #if first_exclamation < first_period and first_exclamation > 0:
-    #    split_point = first_exclamation+1
-    #elif first_period > 0:
-    #    split_point = first_period+1
-    #else:
-    #    split_point = text[0:20]
-    #    
-    #return text[0:split_point], text[split_point:]
-    return text
+    if first_exclamation < first_period and first_exclamation > 0:
+        split_point = first_exclamation+1
+    elif first_period > 0:
+        split_point = first_period+1
+    else:
+        split_point = text[0:20]
+        
+    return text[0:split_point], text[split_point:]
 
 def cut_trailing_action(text):
-    #lines = text.split("\n")
-    #last_line = lines[-1]
-    #if "you ask" in last_line or "You ask" in last_line or "you say" in last_line or "You say" in last_line:
-    #    text = "\n".join(lines[0:-1])
+    lines = text.split("\n")
+    last_line = lines[-1]
+    if "you ask" in last_line or "You ask" in last_line or "you say" in last_line or "You say" in last_line:
+        text = "\n".join(lines[0:-1])
     return text
     
 def cut_trailing_sentence(text):
-    #text = standardize_punctuation(text)
-    #last_punc = max(text.rfind('.'), text.rfind("!"), text.rfind("?"))
-    #if last_punc <= 0:
-    #    last_punc = len(text)-1
+    text = standardize_punctuation(text)
+    last_punc = max(text.rfind('.'), text.rfind("!"), text.rfind("?"))
+    if last_punc <= 0:
+        last_punc = len(text)-1
 
-    #et_token = text.find("<")
-    #if et_token > 0:
-    #    last_punc = min(last_punc, et_token-1)
+    et_token = text.find("<")
+    if et_token > 0:
+        last_punc = min(last_punc, et_token-1)
 
-    #act_token = text.find(">")
-    #if act_token > 0:
-    #    last_punc = min(last_punc, act_token-1)
+    act_token = text.find(">")
+    if act_token > 0:
+        last_punc = min(last_punc, act_token-1)
 
-   # text = text[:last_punc]
+    text = text[:last_punc]
 
-    #text = cut_trailing_quotes(text)
-    #text = cut_trailing_action(text)
+    text = cut_trailing_quotes(text)
+    text = cut_trailing_action(text)
     return text
 
 
 def replace_outside_quotes(text, current_word, repl_word):
-    #text = standardize_punctuation(text)
+    text = standardize_punctuation(text)
 
-    #reg_expr = re.compile(current_word + '(?=([^"]*"[^"]*")*[^"]*$)')
+    reg_expr = re.compile(current_word + '(?=([^"]*"[^"]*")*[^"]*$)')
 
-    #output = reg_expr.sub(repl_word, text)
-    #return output
-    return text
+    output = reg_expr.sub(repl_word, text)
+    return output
 
 
 def is_first_person(text):
