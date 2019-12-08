@@ -30,9 +30,9 @@ def play_dm():
     while True:
         action_prompt = story_manager.story_context() + "What do you do next? \n> You"
         action = player.get_action(action_prompt)
-        print("\n******DEBUG FULL ACTION*******")
-        print(action)
-        print("******END DEBUG******\n")
+        #print("\n******DEBUG FULL ACTION*******")
+        #print(action)
+        #print("******END DEBUG******\n")
         action = action.split("\n")[0]
         punc = action.rfind(".")
         if punc > 0:
