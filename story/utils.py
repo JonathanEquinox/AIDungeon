@@ -5,9 +5,6 @@ from difflib import SequenceMatcher
 
 YAML_FILE = "story/story_data.yaml"
 
-from profanityfilter import ProfanityFilter
-pf = ProfanityFilter()
-
 def console_print(text, width=75):
     last_newline = 0
     i = 0
@@ -63,9 +60,6 @@ def player_won(text):
         if phrase in text:
             return True
     return False
-
-def remove_profanity(text):
-    return text
 
 
 def cut_trailing_quotes(text):
@@ -264,17 +258,3 @@ def second_to_first_person(text):
             text = replace_outside_quotes(text, variation[0], variation[1])
 
     return capitalize_first_letters(text[1:])
-
-
-if __name__ == '__main__':
-    result = 'The only thing they can tell you is, "We have nowhere else to…"'
-    result = result.replace('."', '".')
-    result = result.replace("#", "")
-    result = result.replace("*", "")
-    result = first_to_second_person(result)
-    result = remove_profanity(result)
-
-    while ("\n \n \n " in result):
-        result = result.replace("\n \n \n ", "\n \n ")
-
-    print(result)
