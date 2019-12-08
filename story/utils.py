@@ -69,26 +69,28 @@ def remove_profanity(text):
 
 
 def cut_trailing_quotes(text):
-    num_quotes = text.count('"')
-    if num_quotes % 2 is 0:
-        return text
-    else:
-        final_ind = text.rfind('"')
-        return text[:final_ind]
+    #num_quotes = text.count('"')
+    #if num_quotes % 2 is 0:
+    #    return text
+    #else:
+    #    final_ind = text.rfind('"')
+    #    return text[:final_ind]
+    return text
 
     
 def split_first_sentence(text):
-    first_period = text.find('.')
-    first_exclamation = text.find('!')
+    #first_period = text.find('.')
+    #first_exclamation = text.find('!')
     
-    if first_exclamation < first_period and first_exclamation > 0:
-        split_point = first_exclamation+1
-    elif first_period > 0:
-        split_point = first_period+1
-    else:
-        split_point = text[0:20]
-        
-    return text[0:split_point], text[split_point:]
+    #if first_exclamation < first_period and first_exclamation > 0:
+    #    split_point = first_exclamation+1
+    #elif first_period > 0:
+    #    split_point = first_period+1
+    #else:
+    #    split_point = text[0:20]
+    #    
+    #return text[0:split_point], text[split_point:]
+    return text
 
 def cut_trailing_action(text):
     #lines = text.split("\n")
@@ -119,12 +121,13 @@ def cut_trailing_sentence(text):
 
 
 def replace_outside_quotes(text, current_word, repl_word):
-    text = standardize_punctuation(text)
+    #text = standardize_punctuation(text)
 
-    reg_expr = re.compile(current_word + '(?=([^"]*"[^"]*")*[^"]*$)')
+    #reg_expr = re.compile(current_word + '(?=([^"]*"[^"]*")*[^"]*$)')
 
-    output = reg_expr.sub(repl_word, text)
-    return output
+    #output = reg_expr.sub(repl_word, text)
+    #return output
+    return text
 
 
 def is_first_person(text):
